@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Game | by Ananiasileshi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="left-panel">
+            <div class="player-card" id="black-player">
+                <span class="player-name">Computer</span>
+                <span class="player-time" id="black-time">10:00</span>
+            </div>
+            
+            <div class="player-card active" id="white-player">
+                <span class="player-name">You</span>
+                <span class="player-time" id="white-time">10:00</span>
+            </div>
+
+            <div class="game-modes">
+                <button class="mode-btn active" onclick="setGameMode('ai')">vs Computer</button>
+                <button class="mode-btn" onclick="setGameMode('human')">vs Human</button>
+            </div>
+
+            <div class="difficulty-panel" id="difficulty-panel" style="background: white; border-radius: 15px; padding: 15px;">
+                <label style="color: #34495e; font-weight: 600; margin-bottom: 8px; display: block;">Computer Level:</label>
+                <div class="difficulty-buttons">
+                    <button class="diff-btn" onclick="setDifficulty('beginner')">Beginner</button>
+                    <button class="diff-btn active" onclick="setDifficulty('intermediate')">Intermediate</button>
+                    <button class="diff-btn" onclick="setDifficulty('advanced')">Advanced</button>
+                    <button class="diff-btn" onclick="setDifficulty('expert')">Expert</button>
+                </div>
+            </div>
+
+            <div class="status-panel">
+                <div class="status-text" id="status">White to move</div>
+            </div>
+        </div>
+
+        <div class="board-section">
+            <div class="board-wrapper">
+                <div class="chessboard" id="board"></div>
+            </div>
+            <div class="controls">
+                <button class="control-btn" onclick="undoMove()">↶ Undo</button>
+                <button class="control-btn" onclick="newGame()">New Game</button>
+                <button class="control-btn" onclick="flipBoard()">↻ Flip</button>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="move-list">
+                <h3>Moves</h3>
+                <div id="move-list-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="promotion-modal" id="promotion-modal">
+        <h3>Choose Promotion</h3>
+        <div class="promotion-pieces" id="promotion-pieces"></div>
+    </div>
+
+    <div class="game-end-modal" id="game-end-modal">
+        <h2 id="game-end-title">Game Over</h2>
+        <p id="game-end-message"></p>
+        <div class="modal-buttons">
+            <button class="control-btn" onclick="newGame()">New Game</button>
+            <button class="control-btn" onclick="closeEndModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="chess.js"></script>
+    <script src="chess-logic.js"></script>
+</body>
+</html>
